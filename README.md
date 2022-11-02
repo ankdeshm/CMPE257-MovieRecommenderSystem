@@ -1,5 +1,5 @@
 # CMPE257-MovieRecommenderSystem
-# Project Title: Movie Recommender System
+## Project Title: Movie Recommender System
 
 # About Data:
 # Dataset: Investigating Serendipity in Recommender Systems Based on Real User Feedback
