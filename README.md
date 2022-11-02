@@ -1,6 +1,12 @@
 # CMPE257-MovieRecommenderSystem
 ## Project Title: Movie Recommender System
 
+## Team Information:
+Ankita Arvind Deshmukh - ankdeshm
+Indranil Dutta - d1ndra
+Pranav Chellagurki - pranav4099
+Ganesh Tulshibagwale - 
+
 ## About Data:
 ## Dataset: 
 Investigating Serendipity in Recommender Systems Based on Real User Feedback
