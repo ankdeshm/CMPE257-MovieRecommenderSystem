@@ -5,7 +5,7 @@
 Ankita Arvind Deshmukh - ankdeshm
 Indranil Dutta - d1ndra
 Pranav Chellagurki - pranav4099
-Ganesh Tulshibagwale - 
+Ganesh S Tulshibagwale - Ganesh-S-Tulshibagwale
 
 ## About Data:
 ## Dataset: 
