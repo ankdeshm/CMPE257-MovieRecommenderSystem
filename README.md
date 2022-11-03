@@ -29,6 +29,28 @@ GroupLens Research group at the University of Minnesota and the University of Jy
 •	Content-based recommendation system using feature vector for movies (user-item profile) <br>
 •	Latent-matrix factorization-based recommendation system using other metadata <br>
 
+## Preprocessing:
+Following steps are performed in data-wrangling <br>
+•	Remove unnecessary features that are not planned to be used such as timestamp, IMDB ID etc. <br>
+•	Find dimensions and statistical summary (min, max, mean, median, range, count, etc.) of the dataset <br>
+•	Check for missing values and handle them <br>
+•	Check and duplicate observations and handle them <br>
+•	Factor numerical and categorical columns <br>
+•	One-hot encoding for categorical column - Movie Genre  <br>
+•	Some visualization for movies and users <br>
+
+## Challenges:
+•	Dataset sampling - Possibility of missing out on relevant information <br>
+•	Feature engineering - What attributes are irrelevant to the problem statement? <br>
+•	Class imbalance - Are all the classes represented equally? <br>
+•	Missing data - How do different imputation methods affect the model accuracy? <br>
+•	Data splitting – How to ensure proportional user representation and reliable test and train dataset sizes? <br>
+
+## References:
+[1] Denis Kotkov, Joseph A. Konstan, Qian Zhao, and Jari Veijalainen. 2018. Investigating Serendipity in Recommender Systems Based on Real User Feedback. In Proceedings of SAC 2018: Symposium on Applied Computing , Pau, France, April 9–13, 2018 (SAC 2018), 10 pages. DOI: 10.1145/3167132.3167276 <br>
+[2] Jesse Vig, Shilad Sen, and John Riedl. 2012. The Tag Genome: Encoding Community Knowledge to Support Novel Interaction. ACM Trans. Interact. Intell. Syst. 2, 3: 13:1–13:44. https://doi.org/10.1145/2362394.2362395 <br>
+
+
 
 
 
