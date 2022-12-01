@@ -5,7 +5,6 @@ all: paper.md paper.bib
 		--citeproc \
 		--filter scripts/table-filter.py \
 		--filter pandoc-tablenos \
-		--filter pandoc-fignos \
 		--filter pandoc-eqnos \
 		--csl=./styles/ieee.csl \
 		-M fignos-warning-level=0 \
@@ -20,7 +19,6 @@ tex: paper.md paper.bib
 		--filter pandoc-citeproc \
 		--filter scripts/table-filter.py \
 		--filter pandoc-tablenos \
-		--filter pandoc-fignos \
 		--filter pandoc-eqnos \
 		--csl=./styles/ieee.csl \
 		-M fignos-warning-level=0 \

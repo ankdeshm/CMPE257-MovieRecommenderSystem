@@ -1,7 +1,7 @@
 ---
 title: Performance analysis of different recommender system algorithms on movie dataset.
 date: "November 2022"
-author: Ankita Deshmukh,Pranav Chellagurki,Ganesh Tulshibagwale,Indranil Dutta
+author: Pranav Chellagurki, Ankita Deshmukh, Indranil Dutta, Ganesh Tulshibagwale
 
 header-includes: 
 - \usepackage{booktabs}
@@ -25,18 +25,13 @@ The aim of the paper as described above is to compare various methods on the sam
 
 
   
-Equation 1
 ![Equation 1](Images/eq1.png)
 
-Equation 2
 ![Equation 2](Images/eq2.png)
 
-Equation 3
 ![Equation 3](Images/eq3.png)
 
-Equation 4
 ![Equation 4](Images/eq4.png)
 
-Equation 5
 ![Equation 5](Images/eq5.png)
 
