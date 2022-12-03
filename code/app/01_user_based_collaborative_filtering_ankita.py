@@ -120,8 +120,7 @@ dummy_test.head()
 # In[22]:
 
 
-# User-User Similarity matrix
-# Using Cosine similarity
+# User-User Similarity matrix using Cosine similarity
 from sklearn.metrics.pairwise import cosine_similarity
 
 # User Similarity Matrix using Cosine similarity as a similarity measure between Users
@@ -171,8 +170,7 @@ movie_features.head()
 # In[28]:
 
 
-# Item-Item Similarity matrix
-# Using Cosine similarity
+# Item-Item Similarity matrix using Cosine similarity
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Item Similarity Matrix using Cosine similarity as a similarity measure between Items
@@ -222,7 +220,6 @@ item_final_ratings.iloc[42].sort_values(ascending = False)[0:5]
 
 # ### Evaluation
 # #### Evaluation will we same as you have seen above for the prediction. The only difference being, you will evaluate for the movie already rated by the User instead of predicting it for the movie not rated by the user.
-# 
 
 # In[34]:
 
