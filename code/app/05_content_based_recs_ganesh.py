@@ -11,16 +11,37 @@ import pandas as pd
 import sklearn.metrics.pairwise as pair
 import sklearn.preprocessing as prep
 
-movies_data=pd.read_csv('movies.csv')
-movies_data.drop(columns=['genres'],inplace=True)
-movies_data
+movies=pd.read_csv('movies.csv')
+movies.drop(columns=['genres'],inplace=True)
+movies
 
-tags_data=pd.read_csv('tags.csv')
-tags_data.drop(columns=['timestamp'],inplace=True)
-tags_data
+min_relevance=0.2
+genome=pd.read_csv('tag_genome.csv',error_bad_lines=False,engine='python')
+genome.query(expr='relevance>@min_relevance',inplace=True)
+genome
 
-movies_w_tags=movies_data.merge(tags_data,on=['movieId'])
+relevant_tags=genome['tag'].values
+relevant_tags
+
+tags=pd.read_csv('tags.csv')
+tags.drop(columns=['timestamp'],inplace=True)
+tags
+
+tags.query(expr='tag in @relevant_tags',inplace=True)
+
+movies_w_tags=movies.merge(tags,on=['movieId'])
 movies_w_tags
+
+#movies_data=pd.read_csv('movies.csv')
+#movies_data.drop(columns=['genres'],inplace=True)
+#movies_data
+
+#tags_data=pd.read_csv('tags.csv')
+#tags_data.drop(columns=['timestamp'],inplace=True)
+#tags_data
+
+#movies_w_tags=movies_data.merge(tags_data,on=['movieId'])
+#movies_w_tags
 
 movie_tag_encoder=prep.OneHotEncoder(sparse=False)
 movies_encoded_tags=movie_tag_encoder.fit_transform(movies_w_tags[['tag']])
@@ -38,20 +59,44 @@ content_data
 user_data=movies_w_1_tag.drop(columns=['movieId']).groupby(['userId']).sum()
 user_data
 
+#user_data=movies_w_1_tag.drop(columns=['movieId']).groupby(['userId']).sum()
+#user_data
+
 distances=pair.euclidean_distances(user_data,content_data)
 distances
 
-distance_frame=pd.DataFrame(distances,columns=content_data.index.values)
+distance_frame=pd.DataFrame(distances,index=pd.Index(user_data.index.values,name='UserID'),columns=pd.Index(content_data.index.values,name='MovieID'))
 distance_frame
 
-user_to_rec=2
-recced_movies=distance_frame.sort_values(by=user_to_rec,axis=1).columns.values[:10]
-recced_movies
+"""EVALUATION:
 
-user_data.sort_values(by=user_to_rec,axis=1,ascending=False).query('userId==@user_to_rec')
+Mean Distance to User's Most Highly Recommended Movie
+"""
+
+distance_frame.min(axis=1)
+
+distance_frame.min(axis=1).mean()
+
+"""EXAMPLE RECS"""
+
+user_to_rec=100726
+recced_movies=distance_frame.sort_values(by=user_to_rec,axis=1).columns.values[:5]
+recced_movies
 
 recced_names=[]
 for i in recced_movies:
-  name=movies_data.query('movieId==@i')['title'].values[0]
+  name=movies.query('movieId==@i')['title'].values[0]
   recced_names.append(name)
 recced_names
+
+user_data.sort_values(by=user_to_rec,axis=1,ascending=False).query('userId==@user_to_rec')
+
+content_data.sort_values(by=114044,axis=1,ascending=False).query('movieId==114044')
+
+content_data.sort_values(by=36509,axis=1,ascending=False).query('movieId==36509')
+
+content_data.sort_values(by=26603,axis=1,ascending=False).query('movieId==26603')
+
+content_data.sort_values(by=82499,axis=1,ascending=False).query('movieId==82499')
+
+content_data.sort_values(by=1594,axis=1,ascending=False).query('movieId==1594')
