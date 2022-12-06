@@ -32,17 +32,6 @@ tags.query(expr='tag in @relevant_tags',inplace=True)
 movies_w_tags=movies.merge(tags,on=['movieId'])
 movies_w_tags
 
-#movies_data=pd.read_csv('movies.csv')
-#movies_data.drop(columns=['genres'],inplace=True)
-#movies_data
-
-#tags_data=pd.read_csv('tags.csv')
-#tags_data.drop(columns=['timestamp'],inplace=True)
-#tags_data
-
-#movies_w_tags=movies_data.merge(tags_data,on=['movieId'])
-#movies_w_tags
-
 movie_tag_encoder=prep.OneHotEncoder(sparse=False)
 movies_encoded_tags=movie_tag_encoder.fit_transform(movies_w_tags[['tag']])
 enc_tag_frame=pd.DataFrame(data=movies_encoded_tags,\
@@ -59,8 +48,10 @@ content_data
 user_data=movies_w_1_tag.drop(columns=['movieId']).groupby(['userId']).sum()
 user_data
 
-#user_data=movies_w_1_tag.drop(columns=['movieId']).groupby(['userId']).sum()
-#user_data
+"""TECHNIQUE:
+
+Euclidean Distance
+"""
 
 distances=pair.euclidean_distances(user_data,content_data)
 distances
@@ -70,10 +61,8 @@ distance_frame
 
 """EVALUATION:
 
-Mean Distance to User's Most Highly Recommended Movie
+Mean Distance to Most Highly Recommended Movie
 """
-
-distance_frame.min(axis=1)
 
 distance_frame.min(axis=1).mean()
 
@@ -91,12 +80,80 @@ recced_names
 
 user_data.sort_values(by=user_to_rec,axis=1,ascending=False).query('userId==@user_to_rec')
 
-content_data.sort_values(by=114044,axis=1,ascending=False).query('movieId==114044')
+content_data.sort_values(by=recced_movies[0],axis=1,ascending=False).query('movieId==@recced_movies[0]')
 
-content_data.sort_values(by=36509,axis=1,ascending=False).query('movieId==36509')
+content_data.sort_values(by=recced_movies[1],axis=1,ascending=False).query('movieId==@recced_movies[1]')
 
-content_data.sort_values(by=26603,axis=1,ascending=False).query('movieId==26603')
+content_data.sort_values(by=recced_movies[2],axis=1,ascending=False).query('movieId==@recced_movies[2]')
 
-content_data.sort_values(by=82499,axis=1,ascending=False).query('movieId==82499')
+content_data.sort_values(by=recced_movies[3],axis=1,ascending=False).query('movieId==@recced_movies[3]')
 
-content_data.sort_values(by=1594,axis=1,ascending=False).query('movieId==1594')
+content_data.sort_values(by=recced_movies[4],axis=1,ascending=False).query('movieId==@recced_movies[4]')
+
+"""REVERSE EUCLIDEAN OUT OF CURIOSITY"""
+
+distance_frame.max(axis=1).mean()
+
+user_to_rec=100726
+recced_movies=distance_frame.sort_values(by=user_to_rec,axis=1,ascending=False).columns.values[:5]
+recced_movies
+
+recced_names=[]
+for i in recced_movies:
+  name=movies.query('movieId==@i')['title'].values[0]
+  recced_names.append(name)
+recced_names
+
+user_data.sort_values(by=user_to_rec,axis=1,ascending=False).query('userId==@user_to_rec')
+
+content_data.sort_values(by=recced_movies[0],axis=1,ascending=False).query('movieId==@recced_movies[0]')
+
+content_data.sort_values(by=recced_movies[1],axis=1,ascending=False).query('movieId==@recced_movies[1]')
+
+content_data.sort_values(by=recced_movies[2],axis=1,ascending=False).query('movieId==@recced_movies[2]')
+
+content_data.sort_values(by=recced_movies[3],axis=1,ascending=False).query('movieId==@recced_movies[3]')
+
+content_data.sort_values(by=recced_movies[4],axis=1,ascending=False).query('movieId==@recced_movies[4]')
+
+"""TECHNIQUE:
+
+Cosine Similarity
+"""
+
+similarities=pair.cosine_similarity(user_data,content_data)
+similarities
+
+similarity_frame=pd.DataFrame(similarities,index=pd.Index(user_data.index.values,name='UserID'),columns=pd.Index(content_data.index.values,name='MovieID'))
+similarity_frame
+
+"""EVALUATION:
+
+Mean Similarity to User's Most Highly Recommended Movie
+"""
+
+similarity_frame.max(axis=1).mean()
+
+"""EXAMPLE RECS"""
+
+user_to_rec=100726
+recced_movies=similarity_frame.sort_values(by=user_to_rec,axis=1,ascending=False).columns.values[:5]
+recced_movies
+
+recced_names=[]
+for i in recced_movies:
+  name=movies.query('movieId==@i')['title'].values[0]
+  recced_names.append(name)
+recced_names
+
+user_data.sort_values(by=user_to_rec,axis=1,ascending=False).query('userId==@user_to_rec')
+
+content_data.sort_values(by=recced_movies[0],axis=1,ascending=False).query('movieId==@recced_movies[0]')
+
+content_data.sort_values(by=recced_movies[1],axis=1,ascending=False).query('movieId==@recced_movies[1]')
+
+content_data.sort_values(by=recced_movies[2],axis=1,ascending=False).query('movieId==@recced_movies[2]')
+
+content_data.sort_values(by=recced_movies[3],axis=1,ascending=False).query('movieId==@recced_movies[3]')
+
+content_data.sort_values(by=recced_movies[4],axis=1,ascending=False).query('movieId==@recced_movies[4]')
