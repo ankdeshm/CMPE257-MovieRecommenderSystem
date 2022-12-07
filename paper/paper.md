@@ -78,18 +78,18 @@ Apart from this evaluation, we found the top-5 recommendations for a random user
 ![figure 6](Images/figure_6.png)
 
 
-# Example analysis:
+# Example Analysis:
 
 This method would provide a developer with better intuition regarding which recommender system algorithm works best for a given scenario. If an organization were to develop a new streaming platform, similar to Netflix, they would have a head-start by understanding the contents of this project. 
 
 
 
-# Two step learning:
+# Two Step Learning:
 
 Step 1:
 The two-step learning process requires that we first approximate E_in to be close to E_out with a high degree of accuracy. 
 
-![Equation 10](Images/Equation_11.png)
+![Equation 11](Images/Equation_11.png)
 
 For User-based, Item-based and Matrix-Factorizarion method:
 The number of features: 27003
