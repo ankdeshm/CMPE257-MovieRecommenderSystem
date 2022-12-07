@@ -331,3 +331,21 @@ plt.show()
 
 
 # ### There are other files like tags.csv, tag_genome.csv, answers.csv and we might use some of those files as metadata for content-based recommendations and latent-matrix factorization.
+
+# In[4]:
+
+
+model_list = ['User-Based CF', 'Item-Based CF', 'Content-Based CF', 'Latent Factor-SVD', 'Latent Factor-SVDpp']
+mae_list = [1.23, 2.43, 4.03, 0.68, 0.67]
+
+
+plt.figure(figsize=(12,8))
+plt.bar(height = mae_list, x = model_list, color = 'blue')
+plt.xticks(rotation=90)
+plt.title('Performance Comparison')
+plt.xlabel('Recommendation Algorithms')
+plt.ylabel('Mean Absolute Error')
+plt.show()
+
+
+# In[ ]:
