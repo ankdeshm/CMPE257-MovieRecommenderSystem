@@ -88,7 +88,7 @@ This method would provide a developer with better intuition regarding which reco
 
 # Two Step Learning:
 
-Step 1:
+## Step 1:
 The two-step learning process requires that we first approximate E_in to be close to E_out with a high degree of accuracy. 
 
 ![Equation 11](Images/Equation_11.png)
@@ -102,7 +102,7 @@ N ~ 61,415.
 
 This means that we need a minimum of 61,415 training examples to approximate e_in within e_out ( 0.01 error tolerance) with a high probability of greater than 95%.
 
-Note: 
+### Note: 
 1) Content based recommendation systems work with categorical labels, and the prediction accuracy cannot be interpreted as a numerical value, therefore it is largely unclear how Epsilon could be picked, therefore traditional Hoeffding does not hold relevant.
 
 As for collaborative filtering methods, we cannot apply the traditional Hoeffding inequality as:
@@ -112,7 +112,7 @@ As for collaborative filtering methods, we cannot apply the traditional Hoeffdin
 3) We are also constrained by the computing resources available to us. To achieve 64,415 training samples, we must preprocess >>1 million rows of raw data, which is not a viable option. 
 Each row in our training matrix represents 1 user. 
 
-Step 2:
+## Step 2:
 We need to bring E_In close to 0.
 
 User - Based CF - 1.38
