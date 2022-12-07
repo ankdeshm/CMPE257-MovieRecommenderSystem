@@ -58,13 +58,13 @@ Content-based systems are designed to exploit scenarios in which items can be de
 
 ## Approach 4: Latent Matrix Factorization
 
-A problem with most recommender system algorithms is the sparse nature of the resultant feature matrix. Imagine we were trying to match similar Netflix users. The database consists of ~6000 titles (Movies and TV shows) and an average user might have watched a couple of hundred shows and movies. The likelihood of the feature matrix being sparse is very high. Unlike other methods, we do not have the liberty to simply drop the missing values, as, by definition, we want to impute these values with the most relevant rating. Even if we were to use dimensionality reduction techniques such as Principal Component Analysis, we would make a drastic compromise on the accuracy of the recommendations. In such methods, we can use the Latent Matrix Factorization method which is an alternative to neighborhood-based collaborative filtering and tries to characterize users and items from factors inferred from ratings. It Offers scalability and good predictive accuracy since it’s derived from dimensionality reduction techniques called Singular Value Decomposition (SVD). This Netflix-prize-winning approach exploits the fact that parts of the rows and columns of the utility matrix are highly correlated. The factor vectors are estimated either using Stochastic Gradient Descent (SGD) or Alternating Least Squares (ALS)(Equation 10). Even though this method works great even with the sparse matrix, latent models are not necessarily interpretable in practice. We used the surprise library and experimented with algorithms such as KNN, SVD, and SVDpp. We used the GridSearchCV class which computes the accuracy metrics for an algorithm on various combinations of parameters, over a cross-validation procedure and searches for the best parameters for a prediction algorithm.
+A problem with most recommender system algorithms is the sparse nature of the resultant feature matrix. Imagine we were trying to match similar Netflix users. The database consists of ~6000 titles (Movies and TV shows) and an average user might have watched a couple of hundred shows and movies. The likelihood of the feature matrix being sparse is very high. Unlike other methods, we do not have the liberty to simply drop the missing values, as, by definition, we want to impute these values with the most relevant rating. Even if we were to use dimensionality reduction techniques such as Principal Component Analysis, we would make a drastic compromise on the accuracy of the recommendations. In such methods, we can use the Latent Matrix Factorization method[7] which is an alternative to neighborhood-based collaborative filtering and tries to characterize users and items from factors inferred from ratings. It Offers scalability and good predictive accuracy since it’s derived from dimensionality reduction techniques called Singular Value Decomposition (SVD). This Netflix-prize-winning approach[5] exploits the fact that parts of the rows and columns of the utility matrix are highly correlated. The factor vectors are estimated either using Stochastic Gradient Descent (SGD) or Alternating Least Squares (ALS)(Equation 10). Even though this method works great even with the sparse matrix, latent models are not necessarily interpretable in practice. We used the Surprise library[6] and experimented with algorithms such as KNN, SVD, and SVDpp. We used the GridSearchCV class which computes the accuracy metrics for an algorithm on various combinations of parameters, over a cross-validation procedure and searches for the best parameters for a prediction algorithm. This method was first used by
 
 ![Equation 10](Images/Equation_10.png)
 
 # Comparisons
 
-The evaluation metric that we used for comparing the various approaches of a movie recommendation system is the Mean Absolute Error (MAE) (Equation 12). For UB-CF, we got the mean absolute error of 1.23 which means that on average our UB-CF engine is making an error of 1.23 in predicting the ratings by users. For IB-CF, we got the mean absolute error of 2.43 which means that on average our IB-CF engine is making an error of 2.43 in predicting the ratings for items. For the content-based model, we got the mean absolute error of 4.03 which means that on average our content-based model is making an error of 4.03  in predicting the ratings by users. For latent-matrix factorization, we are using different algorithms such as KNN, SVD, and SDVpp from the surprise library for which we got MAE of 0.72, 0.68, and 0.67 respectively.
+The evaluation metric that we used for comparing the various approaches of a movie recommendation system is the Mean Absolute Error (MAE) (Equation 12). For UB-CF, we got the mean absolute error of 1.23 which means that on average our UB-CF engine is making an error of 1.23 in predicting the ratings by users. For IB-CF, we got the mean absolute error of 2.43 which means that on average our IB-CF engine is making an error of 2.43 in predicting the ratings for items. For the content-based model, we got the mean absolute error of 4.03 which means that on average our content-based model is making an error of 4.03  in predicting the ratings by users. For latent-matrix factorization, we are using different algorithms such as KNN, SVD, and SDVpp from the Surprise library for which we got MAE of 0.72, 0.68, and 0.67 respectively.
 Comparison (figure 4).
 
 ![Equation 12](Images/Equation_12.png)
@@ -129,11 +129,20 @@ We have seen in detail the different recommender system methods. By providing ac
 
 # References:
 
-[1] C. C. Aggarwal, Recommender Systems - The Textbook. Springer, 2016, pp. 1–498. <br>
+[1] C. C. Aggarwal, Recommender Systems - The Textbook. Springer, 2016, pp. 1–498.
+
 [2] “Movie-Lens-Dataset-Visualization-and-Prediction”, https://aigamer28100.github.io/
-https://aigamer28100.github.io/Movie-Lens-Dataset-Visualization-and-Prediction/(accessed Dec 6, 2022) <br>
+https://aigamer28100.github.io/Movie-Lens-Dataset-Visualization-and-Prediction/(accessed Dec 6, 2022)
+
 [3] “Recommender-System-Collaborative-Filtering-MovieLens”,  github.com
-https://github.com/pratiknabriya/Recommender-System-Collaborative-Filtering-MovieLens/blob/main/collaborative_filtering_movielense.ipynb(accessed Dec. 6,2022) <br>
+https://github.com/pratiknabriya/Recommender-System-Collaborative-Filtering-MovieLens/blob/main/collaborative_filtering_movielense.ipynb(accessed Dec. 6,2022) 
+
 [4] F.O. Isinkaye, Y.O. Folajimi, B.A. Ojokoh, Recommendation systems: Principles, methods and evaluation, Egyptian Informatics Journal, Volume 16, Issue 3, 2015, Pages 261-273, ISSN 1110-8665, https://doi.org/10.1016/j.eij.2015.06.005. (https://www.sciencedirect.com/science/article/pii/S1110866515000341)
 
+[5] "Netflix Update: Try This at Home",  sifter.org
+https://sifter.org/~simon/journal/20061211.html(accessed Dec. 6,2022)
 
+[6] "surprise: A Python scikit for recommender systems.",  surpriselib.com
+https://surpriselib.com/(accessed Dec. 6,2022)<br>
+[7] "Matrix Factorization-based algorithms",  surprise.readthedocs.io
+https://surprise.readthedocs.io/en/stable/matrix_factorization.html(accessed Dec. 6,2022)<br>
