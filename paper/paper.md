@@ -129,4 +129,13 @@ We see that these values are close to our E_out values for the individual algori
 
 We have seen in detail the different recommender system methods. By providing accuracy and performance metrics for the different algorithms, we can, with reasonable confidence draw a conclusion that matrix Factorization proves to be the best algorithm of the four. That being said, ultimately, the dataset and the use case must dictate the choice of the algorithm. If we are dealing with very large datasets, then it would be advised to pick the Matrix Factorization method over the rest. Furthermore, if we were to take into account multiple factors (such as both user preferences and item characteristics), then again, Matrix Factorization is the best choice. Alternatively, if we find ourselves to be working with a small dataset, or if we are taking into account only a single factor (either user preference or item characteristics) then, it is advisable to pick User Based, or Item-Based over the Matrix Factorization method. Finally, content-based recommender systems can be used when there is a dearth of prior data pertaining to a user, or an item. Essentially, A new user would be asked to fill in a quick survey, whose results are used to run a content-based recommendation algorithm (Bypassing the cold-start problem), then as we begin to accumulate more user data, we can switch over to UB/IB - CF, finally, as the user data becomes increasingly large, we can begin to run the Matrix Factorization algorithm. Thus, at any point in time, the dataset and the use case must dictate the choice of the algorithm.
 
+# References:
+
+[1] C. C. Aggarwal, Recommender Systems - The Textbook. Springer, 2016, pp. 1–498. <br>
+[2] “Movie-Lens-Dataset-Visualization-and-Prediction”, https://aigamer28100.github.io/
+https://aigamer28100.github.io/Movie-Lens-Dataset-Visualization-and-Prediction/(accessed Dec 6, 2022) <br>
+[3] “Recommender-System-Collaborative-Filtering-MovieLens”,  github.com
+https://github.com/pratiknabriya/Recommender-System-Collaborative-Filtering-MovieLens/blob/main/collaborative_filtering_movielense.ipynb(accessed Dec. 6,2022) <br>
+
+
 
