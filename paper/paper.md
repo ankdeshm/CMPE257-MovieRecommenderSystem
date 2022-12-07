@@ -132,12 +132,11 @@ We have seen in detail the different recommender system methods. By providing ac
 [1] C. C. Aggarwal, Recommender Systems - The Textbook. Springer, 2016, pp. 1–498.
 
 [2] “Movie-Lens-Dataset-Visualization-and-Prediction”, https://aigamer28100.github.io/
-https://aigamer28100.github.io/Movie-Lens-Dataset-Visualization-and-Prediction/(accessed Dec 6, 2022)
+ [link](https://aigamer28100.github.io/Movie-Lens-Dataset-Visualization-and-Prediction/) (accessed Dec 6, 2022)
 
-[3] “Recommender-System-Collaborative-Filtering-MovieLens”,  github.com
-https://github.com/pratiknabriya/Recommender-System-Collaborative-Filtering-MovieLens/blob/main/collaborative_filtering_movielense.ipynb(accessed Dec. 6,2022) 
+[3] “Recommender-System-Collaborative-Filtering-MovieLens”,  github.com [link](https://github.com/pratiknabriya/Recommender-System-Collaborative-Filtering-MovieLens/blob/main/collaborative_filtering_movielense.ipynb)(accessed Dec. 6,2022) 
 
-[4] F.O. Isinkaye, Y.O. Folajimi, B.A. Ojokoh, Recommendation systems: Principles, methods and evaluation, Egyptian Informatics Journal, Volume 16, Issue 3, 2015, Pages 261-273, ISSN 1110-8665, https://doi.org/10.1016/j.eij.2015.06.005. (https://www.sciencedirect.com/science/article/pii/S1110866515000341)
+[4] F.O. Isinkaye, Y.O. Folajimi, B.A. Ojokoh, Recommendation systems: Principles, methods and evaluation, Egyptian Informatics Journal, Volume 16, Issue 3, 2015, Pages 261-273, ISSN 1110-8665, https://doi.org/10.1016/j.eij.2015.06.005. [link](https://www.sciencedirect.com/science/article/pii/S1110866515000341)
 
 [5] "Netflix Update: Try This at Home",  sifter.org
 https://sifter.org/~simon/journal/20061211.html(accessed Dec. 6,2022)
@@ -146,4 +145,4 @@ https://sifter.org/~simon/journal/20061211.html(accessed Dec. 6,2022)
 https://surpriselib.com/(accessed Dec. 6,2022)
 
 [7] "Matrix Factorization-based algorithms",  surprise.readthedocs.io
-https://surprise.readthedocs.io/en/stable/matrix_factorization.html(accessed Dec. 6,2022)
+[link](https://surprise.readthedocs.io/en/stable/matrix_factorization.html)(accessed Dec. 6,2022)
