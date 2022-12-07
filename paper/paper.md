@@ -143,6 +143,7 @@ https://github.com/pratiknabriya/Recommender-System-Collaborative-Filtering-Movi
 https://sifter.org/~simon/journal/20061211.html(accessed Dec. 6,2022)
 
 [6] "surprise: A Python scikit for recommender systems.",  surpriselib.com
-https://surpriselib.com/(accessed Dec. 6,2022)<br>
+https://surpriselib.com/(accessed Dec. 6,2022)
+
 [7] "Matrix Factorization-based algorithms",  surprise.readthedocs.io
-https://surprise.readthedocs.io/en/stable/matrix_factorization.html(accessed Dec. 6,2022)<br>
+https://surprise.readthedocs.io/en/stable/matrix_factorization.html(accessed Dec. 6,2022)
