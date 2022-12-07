@@ -30,19 +30,31 @@ The aim of the paper as described above is to compare various recommendation met
 
 Since we are dealing with a dataset with 1 million observations, dimensionality reduction or filtering out the unnecessary data becomes a necessary step. We eliminated the features such as timestamp, IMDB ID, etc. To understand the relationship between users and movies, we combined the two CSV files, movies, and training, into one data frame and checked for the dimensions and statistical summary of this data frame. We also performed some essential data cleaning steps such as removal of missing values and duplicated rows, factorization of categorical variables, string manipulation to extract the year of release for movies, grouping by the viewers count and mean user rating for movies, and most importantly one-hot-encoding for converting movie genres into separate features. We used statistical summary and some visualizations to respond to a few questions out of curiosity such as how many movie genres are present and what is the most predominant genre in our dataset; approximately how many movies are released each year; which year recorded the most movies; what is the average rating for each movie; how many users watched a particular movie; what are some of the highest-rated movies; who are the users who voted for the maximum number of movies; and what is their rating pattern[2]. After this exploratory data analysis, we utilized the following techniques to recommend movies to different users. Some of the most fascinating observations are listed here. The most number of movies (~17.5k) belong to the drama genre (Figure 1); the most number of movies (443k), was released in 2009, according to statistics (Figure 2). On average, 59k movies are released annually. The Matrix, with ~42k views, is the most viewed movie in our dataset. In terms of user reviews and viewership, it also has the highest rating. Around 20k users gave "The Matrix" a rating of 4.0 or above (Figure 3). The user with ID 148071 rated ~18k movies and his/her average rating for the movies is 3.16.
 
-![Equation 1](Images/eq1.png)
+![Figure 1](Images/Fig123.png)
 
 ## Approach 1: User-Based Collaborative Filtering
 
 The UB-CF method could be thought of as being similar to a Nearest-Neighbour algorithm. We find the nearest neighbor to our target user, that is, we find users with similar likes as our target, and assume that an item rated highly by the neighbor and not yet seen by the target is likely a good recommendation[3]. The method produces largely sparse and high-dimension feature vectors, and according to the Hoeffding bound, we would need to have a very large dataset in order to bound the probability of a bad event occurring to a small value. The similarity between any two users can be calculated by using Raw Cosine similarity(Equation 1) or Pearson correlation coefficient(Equation 2). In general, the Pearson correlation coefficient is preferable to the raw cosine because of the bias adjustment effect of mean-centering. This adjustment accounts for the fact that different users exhibit different levels of generosity in their global rating patterns. Once we find the similarity between users, either average, weighted average, or mean-centered average can be used to calculate the unknown rating(Equation 3, Equation 4 and Equation 5). Even though it’s a great method to start with, UB-CF is susceptible to a cold start problem when there are new users, new items or very few users/ratings in the system. 
 
+![Equation 1](Images/Equation_1.png)
+
+![Equation 2](Images/Equation_2.png)
+
 ## Approach 2: Item-Based Collaborative Filtering
 
 The IB-CF method on the other hand looks for similarities between pairs of items, rather than users. It analyzes the purchase/watch patterns of a user and recommends by computing the most similar item[3]. The algorithm, similar to the nearest neighbor search, will cluster different items into groups, pick the top k items and return a weighted sum of similar item ratings(Equation 7). To find the most similar items, we used the adjusted cosine similarity(Equation 6). The biggest advantage of this method is that the pairwise similarities of items can be computed offline as well. While the cold-start problem with new users is resolved, IB-CF is still susceptible to the cold-start problem for new items. In practice, IB-CF is supposed to perform slightly better than UB-CF. However, due to the high amount of training data in our case, UB-CF outperformed IB-CF.
 
+![Equation 2](Images/Equation_6.png)
+
+![Equation 2](Images/Equation_7.png)
+
 ## Approach 3: Content-Based Filtering
 
 Content-based systems are designed to exploit scenarios in which items can be described with descriptive sets of attributes [1]. It is a simplified approach to provide personalized recommendations by surveying the users for their preferences. The recommendations are items that have the highest match with the user preferences. The first phase in all content-based models is to extract discriminative features for representing the items. Discriminative features are those, which are highly predictive of user interests [1]. In our case, these features are extracted from the tags.csv file. A Feature like the movie genre would have been a great measure to assess user preferences but that information is not explicitly available to us. So next, we form the neighborhood using user-item similarities by computing either Cosine similarity (in case of weighted features) (Equation 8) or Jaccard similarity (in case of binary features) (Equation 9). While this method is highly explainable, it requires efforts in terms of feature engineering and may lead to overspecialization with no recommendations out of the user's content zone. There is also another cold-start problem with new users since we do not know how to build a profile for users who decline to provide explicit answers on their preferences. Furthermore, there may be cases where users use tags to indicate things they disliked about a movie, so searching for movies with similar tags ends up being undesirable.
+
+![Equation 8](Images/Equation_8.png)
+
+![Equation 9](Images/Equation_9.png)
 
 ## Approach 4: Latent Matrix Factorization
 
