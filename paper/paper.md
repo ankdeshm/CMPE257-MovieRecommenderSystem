@@ -66,8 +66,10 @@ A problem with most recommender system algorithms is the sparse nature of the re
 
 # Comparisons
 
-The evaluation metric that we used for comparing the various approaches of a movie recommendation system is the Mean Absolute Error (MAE) (Equation 11). For UB-CF, we got the mean absolute error of 1.23 which means that on average our UB-CF engine is making an error of 1.23 in predicting the ratings by users. For IB-CF, we got the mean absolute error of 2.43 which means that on average our IB-CF engine is making an error of 2.43 in predicting the ratings for items. For the content-based model, we got the mean absolute error of 4.03 which means that on average our content-based model is making an error of 4.03  in predicting the ratings by users. For latent-matrix factorization, we are using different algorithms such as KNN, SVD, and SDVpp from the surprise library for which we got MAE of 0.72, 0.68, and 0.67 respectively.
+The evaluation metric that we used for comparing the various approaches of a movie recommendation system is the Mean Absolute Error (MAE) (Equation 12). For UB-CF, we got the mean absolute error of 1.23 which means that on average our UB-CF engine is making an error of 1.23 in predicting the ratings by users. For IB-CF, we got the mean absolute error of 2.43 which means that on average our IB-CF engine is making an error of 2.43 in predicting the ratings for items. For the content-based model, we got the mean absolute error of 4.03 which means that on average our content-based model is making an error of 4.03  in predicting the ratings by users. For latent-matrix factorization, we are using different algorithms such as KNN, SVD, and SDVpp from the surprise library for which we got MAE of 0.72, 0.68, and 0.67 respectively.
 Comparison (figure 4).
+
+![Equation 12](Images/Equation_12.png)
 
 ![figure 4](Images/figure_4.png)
 
