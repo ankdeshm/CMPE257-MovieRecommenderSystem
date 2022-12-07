@@ -1,7 +1,7 @@
 ---
-title: Performance analysis of different recommender system algorithms on movie dataset.
-date: "November 2022"
-author: Pranav Chellagurki, Ankita Deshmukh, Indranil Dutta, Ganesh Tulshibagwale
+title: Performance Analysis of Different Recommender System Algorithms on Movie Dataset
+date: "December 2022"
+author: Pranav Chellagurki, Ankita Arvind Deshmukh, Indranil Dutta, Ganesh Tulshibagwale
 
 header-includes: 
 - \usepackage{booktabs}
@@ -18,8 +18,6 @@ A movie recommendation system is a machine learning-based approach to filter and
 
 Recommender systems are ubiquitous and are the backbone of many consumer media giants such as Netflix, Amazon, Hulu, Spotify, etc. With a prolific rise in consumer habits, we now have more data than ever. The main idea of a recommender system is to find a pattern within a user's likes and dislikes, and use that information to recommend an unseen item that the user would like. The prior knowledge that we have of the user would suggest that this is a problem best suited for Machine Learning techniques, which mine for patterns within seemingly chaotic data. The idea of swaying user choice by the power of predictive suggestions is a powerful tool, and an excellent recommender system could push an organization to higher profits. As with most machine learning algorithms, even recommender systems pose a question to the developer. Which algorithm best suits my needs? We try to answer this question by comparing the performance of different algorithms such as User-based collaborative filtering, Item-based collaborative filtering, Content-based collaborative filtering, and Latent-matrix factorization on the movie recommendation dataset. The data and the need should dictate the way we choose to model the problem. Maybe our experiments can help derive standard practices across the board. Recommender systems can be deployed in a variety of settings from clothes, shoes, movies, etc. For this project, we chose the serendipity movie rating dataset. Beyond the main goal of the project - Analysis of various recommender systems algorithms, we also delve into various challenges that one would usually face when designing such a system - Class imbalance, Dataset sampling, etc and potential ways of addressing them. The paper will allow the reader to understand not only the fundamental working concepts of Recommender systems but also the necessary data engineering practices and methods such as - Ways of handling missing values, duplicates, categorical values, etc.
 
-  
-  
   
 
 # Methods
