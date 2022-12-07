@@ -78,6 +78,51 @@ Apart from this evaluation, we found the top-5 recommendations for a random user
 ![figure 6](Images/figure_6.png)
 
 
+# Example analysis:
+
+This method would provide a developer with better intuition regarding which recommender system algorithm works best for a given scenario. If an organization were to develop a new streaming platform, similar to Netflix, they would have a head-start by understanding the contents of this project. 
+
+
+
+# Two step learning:
+
+Step 1:
+The two-step learning process requires that we first approximate E_in to be close to E_out with a high degree of accuracy. 
+
+![Equation 10](Images/Equation_11.png)
+
+For User-based, Item-based and Matrix-Factorizarion method:
+The number of features: 27003
+Let us take Epsilon = 0.01
+To make sure that E-In approximates E_out with a high probability of let's say greater than 95%
+
+N ~ 61,415.
+
+This means that we need a minimum of 61,415 training examples to approximate e_in within e_out ( 0.01 error tolerance) with a high probability of greater than 95%.
+
+Note: 
+1) Content based recommendation systems work with categorical labels, and the prediction accuracy cannot be interpreted as a numerical value, therefore it is largely unclear how Epsilon could be picked, therefore traditional Hoeffding does not hold relevant.
+
+As for collaborative filtering methods, we cannot apply the traditional Hoeffding inequality as:
+
+2)  We are not iteratively trying to find the best “hypothesis”. Rather, we are simply finding the nearest similar user by using similarity metrics such as cosine similarity.
+
+3) We are also constrained by the computing resources available to us. To achieve 64,415 training samples, we must preprocess >>1 million rows of raw data, which is not a viable option. 
+Each row in our training matrix represents 1 user. 
+
+Step 2:
+We need to bring E_In close to 0.
+
+User - Based CF - 1.38
+Item - Based CF - 2.56
+Content - Based CF - 4.39
+Latent Factor SCD - 0.89
+Latent Factor SCDpp  - 0.75
+
+We see that these values are close to our E_out values for the individual algorithms.
+
+
+
 # Conclusion:
 
 We have seen in detail the different recommender system methods. By providing accuracy and performance metrics for the different algorithms, we can, with reasonable confidence draw a conclusion that matrix Factorization proves to be the best algorithm of the four. That being said, ultimately, the dataset and the use case must dictate the choice of the algorithm. If we are dealing with very large datasets, then it would be advised to pick the Matrix Factorization method over the rest. Furthermore, if we were to take into account multiple factors (such as both user preferences and item characteristics), then again, Matrix Factorization is the best choice. Alternatively, if we find ourselves to be working with a small dataset, or if we are taking into account only a single factor (either user preference or item characteristics) then, it is advisable to pick User Based, or Item-Based over the Matrix Factorization method. Finally, content-based recommender systems can be used when there is a dearth of prior data pertaining to a user, or an item. Essentially, A new user would be asked to fill in a quick survey, whose results are used to run a content-based recommendation algorithm (Bypassing the cold-start problem), then as we begin to accumulate more user data, we can switch over to UB/IB - CF, finally, as the user data becomes increasingly large, we can begin to run the Matrix Factorization algorithm. Thus, at any point in time, the dataset and the use case must dictate the choice of the algorithm.
