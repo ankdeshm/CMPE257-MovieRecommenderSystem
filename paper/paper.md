@@ -40,6 +40,8 @@ The UB-CF method could be thought of as being similar to a Nearest-Neighbour alg
 
 ![Equation 2](Images/Equation_2.png)
 
+![Figure 345](Images/UBCF.png)
+
 ## Approach 2: Item-Based Collaborative Filtering
 
 The IB-CF method on the other hand looks for similarities between pairs of items, rather than users. It analyzes the purchase/watch patterns of a user and recommends by computing the most similar item[3]. The algorithm, similar to the nearest neighbor search, will cluster different items into groups, pick the top k items and return a weighted sum of similar item ratings(Equation 7). To find the most similar items, we used the adjusted cosine similarity(Equation 6). The biggest advantage of this method is that the pairwise similarities of items can be computed offline as well. While the cold-start problem with new users is resolved, IB-CF is still susceptible to the cold-start problem for new items. In practice, IB-CF is supposed to perform slightly better than UB-CF. However, due to the high amount of training data in our case, UB-CF outperformed IB-CF.
