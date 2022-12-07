@@ -62,30 +62,24 @@ Content-based systems are designed to exploit scenarios in which items can be de
 
 A problem with most recommender system algorithms is the sparse nature of the resultant feature matrix. Imagine we were trying to match similar Netflix users. The database consists of ~6000 titles (Movies and TV shows) and an average user might have watched a couple of hundred shows and movies. The likelihood of the feature matrix being sparse is very high. Unlike other methods, we do not have the liberty to simply drop the missing values, as, by definition, we want to impute these values with the most relevant rating. Even if we were to use dimensionality reduction techniques such as Principal Component Analysis, we would make a drastic compromise on the accuracy of the recommendations. In such methods, we can use the Latent Matrix Factorization method which is an alternative to neighborhood-based collaborative filtering and tries to characterize users and items from factors inferred from ratings. It Offers scalability and good predictive accuracy since it’s derived from dimensionality reduction techniques called Singular Value Decomposition (SVD). This Netflix-prize-winning approach exploits the fact that parts of the rows and columns of the utility matrix are highly correlated. The factor vectors are estimated either using Stochastic Gradient Descent (SGD) or Alternating Least Squares (ALS)(Equation 10). Even though this method works great even with the sparse matrix, latent models are not necessarily interpretable in practice. We used the surprise library and experimented with algorithms such as KNN, SVD, and SVDpp. We used the GridSearchCV class which computes the accuracy metrics for an algorithm on various combinations of parameters, over a cross-validation procedure and searches for the best parameters for a prediction algorithm.
 
+![Equation 10](Images/Equation_10.png)
+
 # Comparisons
 
 The evaluation metric that we used for comparing the various approaches of a movie recommendation system is the Mean Absolute Error (MAE) (Equation 11). For UB-CF, we got the mean absolute error of 1.23 which means that on average our UB-CF engine is making an error of 1.23 in predicting the ratings by users. For IB-CF, we got the mean absolute error of 2.43 which means that on average our IB-CF engine is making an error of 2.43 in predicting the ratings for items. For the content-based model, we got the mean absolute error of 4.03 which means that on average our content-based model is making an error of 4.03  in predicting the ratings by users. For latent-matrix factorization, we are using different algorithms such as KNN, SVD, and SDVpp from the surprise library for which we got MAE of 0.72, 0.68, and 0.67 respectively.
 Comparison (figure 4).
 
+![figure 4](Images/figure_4.png)
+
 Apart from this evaluation, we found the top-5 recommendations for a random user with ID “100726” with all four algorithms and compared them against each other (figure 5 and figure 6).
+
+![figure 5](Images/figure_5.png)
+
+![figure 6](Images/figure_6.png)
+
 
 # Conclusion:
 
 We have seen in detail the different recommender system methods. By providing accuracy and performance metrics for the different algorithms, we can, with reasonable confidence draw a conclusion that matrix Factorization proves to be the best algorithm of the four. That being said, ultimately, the dataset and the use case must dictate the choice of the algorithm. If we are dealing with very large datasets, then it would be advised to pick the Matrix Factorization method over the rest. Furthermore, if we were to take into account multiple factors (such as both user preferences and item characteristics), then again, Matrix Factorization is the best choice. Alternatively, if we find ourselves to be working with a small dataset, or if we are taking into account only a single factor (either user preference or item characteristics) then, it is advisable to pick User Based, or Item-Based over the Matrix Factorization method. Finally, content-based recommender systems can be used when there is a dearth of prior data pertaining to a user, or an item. Essentially, A new user would be asked to fill in a quick survey, whose results are used to run a content-based recommendation algorithm (Bypassing the cold-start problem), then as we begin to accumulate more user data, we can switch over to UB/IB - CF, finally, as the user data becomes increasingly large, we can begin to run the Matrix Factorization algorithm. Thus, at any point in time, the dataset and the use case must dictate the choice of the algorithm.
 
-
-
-
-
-
-  
-![Equation 1](Images/eq1.png)
-
-![Equation 2](Images/eq2.png)
-
-![Equation 3](Images/eq3.png)
-
-![Equation 4](Images/eq4.png)
-
-![Equation 5](Images/eq5.png)
 
